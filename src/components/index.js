@@ -23,10 +23,63 @@ background-color: ${(props) =>
     : "transparent"};
 `;
 
+export const Touchable = styled.TouchableOpacity`
+display: flex;
+overflow: hidden;
+flex: ${(props) => (props.height ? "none" : 1)};
+width: ${(props) => (props.fluid ? "100%" : props.width || "auto")};
+max-width: ${(props) => (props.fluid ? "100%" : props.width || "auto")};
+max-height: ${(props) => props.height || "auto"};
+height: ${(props) => props.height || "auto"};
+margin: ${(props) => props.spacing || 0};
+flex-direction: ${(props) => (props.row ? "row" : "column")};
+justify-content: ${(props) => props.justify || "flex-start"};
+align-items: ${(props) => props.align || "flex-start"};
+padding: ${(props) => (props.hasPadding ? "20px" : "0px")};
+border-radius: ${(props) => props.radius || "0px"};
+border: ${props => props.border || "none"};
+background-color: ${(props) =>
+  props.background
+    ? colors[props.background] || props.background
+    : "transparent"};
+`;
+
+export const ScrollView = styled.ScrollView.attrs({
+  showsHorizontalScrollIndicator: false,
+  showsverticalScrollIndicator: false,
+  })`
+  padding: ${props => (props.hasPadding ? '20px' : '0')};
+  flex: ${props => (props.height? 'none' : 1)};
+  width: ${props => (props.fluid ? '100%' : 'auto')};
+  height: ${props => props.height || 'auto'};
+  background: ${props =>
+  props.background ? colors[props.background] : 'transparent' };
+  `;
+
 export const SafeAreaView = styled.SafeAreaView`
 flex-direction: ${(props) => (props.row ? "row" : "column")};
 `
-
+export const Cover = styled.ImageBackground.attrs(props => ({
+  source: props.image
+  ? {
+  uri : props.image,
+  }
+  : props.source,
+  resizeMode: 'cover',
+  }))`
+  width: ${props => props.width || '60px'};
+  height: ${props => props.height || '60px'};
+  margin: ${props => props.spacing || '0px'};
+  border-radius: ${props =>
+  props.radius || ( props.circle ? props.width || '60px' : '3px')};
+  border: ${props => props.border || 'none'};
+  background-color: ${colors.muted};
+  flex-direction: ${props => props.row ? 'row' : 'column'};
+  justify-content: ${props => props.justify || 'flex-start'};
+  align-items: ${props => props.align || 'flex-start'};
+  padding: ${props => props.hasPadding ? '20px' : '0'};
+  overflow: hidden;
+  `;
 
 export const Title = styled.Text`
  color: ${(props) => colors[props.color || "dark"]};
