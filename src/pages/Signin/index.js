@@ -3,7 +3,7 @@ import {StatusBar} from "react-native"
 import { Box, Text, Title, Spacer, Input, Button } from '../../components';
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 
-const SignIn = () => {
+const SignIn = ({navigation: {navigate}}) => {
   return (
     <>
     <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'}/>
@@ -21,15 +21,14 @@ const SignIn = () => {
       <Input placeholder="Password" secureTextEntry />
       <Spacer size="40px" />
 
-      <Button block>
+      <Button block onPress={() => navigate('Feed')}>
         <Text color="light">SignIn into my account</Text>
       </Button>
       <Spacer size="30px" />
       <Text
         underline
-        onPress={() => {
-          alert('Go to creater account!');
-        }}
+        onPress={() =>navigate('SignUp')
+        }
       >Create new account</Text>
     </Box>
     </>
