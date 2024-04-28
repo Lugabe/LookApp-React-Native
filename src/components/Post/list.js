@@ -5,7 +5,7 @@ import Post from '.';
 const PostList = () => {
   return (
     <Box fluid>
-      {Array.from(Array(30))?.map((item) => (
+      {Array.from(Array(15))?.map((item) => (
         <Post />
       ))}
     </Box>

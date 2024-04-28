@@ -1,11 +1,17 @@
 import React from "react";
+import {useNavigation} from "@react-navigation/native"
 import { Box, Cover, Spacer, Text, Title, Touchable } from "..";
 import util from "../../util";
 import {colors} from "../../styles/theme.json"
 
+
 const Category = ({title, description}) =>{
+
+    const {navigate} = useNavigation()
+    
     return(
         <Touchable 
+        onPress={() => navigate('Category')}
             fluid
             width="100%" 
             height= "180px" 

@@ -6,7 +6,7 @@ import { Box, Text, Title, Touchable } from '../../components';
 import { colors } from '../../styles/theme.json';
 import util from '../../util'
 
-const Header = ({ title="Explore", right = null }) => {
+const Header = ({ title="Explore", right = null, goBack = false }) => {
 
 
   const navigation = useNavigation();
@@ -28,7 +28,7 @@ const Header = ({ title="Explore", right = null }) => {
         justifyContent: 'space-between', 
         alignItems: 'center' }}>
         <Touchable
-          onPress={() => navigation.openDrawer()} 
+          onPress={() => navigation[!goBack? "openDrawer" : "goBack"]()} 
           width="70px" 
           height= "80px"
           justify="center" 
@@ -36,7 +36,7 @@ const Header = ({ title="Explore", right = null }) => {
           hasPadding
         >
 
-          <Icon name="menu" size={20} />
+          <Icon name={!goBack? "menu" : "arrow-left"} size={20} />
         </Touchable>
 
         <Box align="center" 
