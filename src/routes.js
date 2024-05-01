@@ -16,6 +16,7 @@ import Marketplace from './pages/Marketplace';
 import Cart from './pages/Cart/index';
 import Payment from './components/Forms/payment';
 import PaymentForm from './components/Forms/payment';
+import Orders from './pages/Orders';
 
 
 const Stack = createStackNavigator();
@@ -79,7 +80,7 @@ const DrawerComponent = () =>{
 const Routes = () => {
   return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='Payment'>
+            <Stack.Navigator initialRouteName='Orders'>
                 <Stack.Screen options={{
                     headerShown: false
                 }} name='Home' component={Home}/>
@@ -110,6 +111,9 @@ const Routes = () => {
                 <Stack.Screen options={{
                     headerShown: false
                 }} name='PaymentForm' component={PaymentForm}/>
+                <Stack.Screen options={{
+                    headerShown: false
+                }} name='Orders' component={Orders}/>
             </Stack.Navigator>
         </NavigationContainer>
         )

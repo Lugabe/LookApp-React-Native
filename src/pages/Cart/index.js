@@ -6,12 +6,20 @@ import Tables from '../../components/Tables';
 import Product from '../../components/Product';
 import { colors } from '../../styles/theme.json';
 import util from '../../util';
-import Payment from '../../components/Forms/payment'; 
-const Cart = ({navigation: {navigate}}) => {
+import Payment from '../../components/Forms/payment';
+import CongratsModel from '../../components/Modals/congrats';
+
+
+const Cart = ({ navigation: { navigate } }) => {
+
+  const [showModalCongrats, setShowModalCongrats] = useState(false)
   const [tab, setTab] = useState('cart');
 
   return (
     <>
+
+      {showModalCongrats && <CongratsModel />}
+
       <Header title="Cart" goBack />
 
       <Tables
@@ -45,9 +53,9 @@ const Cart = ({navigation: {navigate}}) => {
             </Box>
 
             <Spacer size="10px" />
-            <Box row justify="space-between">
-              <Text color="#00E655">Discount: </Text>
-              <Text color={colors.primary}>R$-34,00</Text>
+            <Box row justify="space-between" >
+              <Text color="success">Discount: </Text>
+              <Text color="success">R$-34,00  </Text>
             </Box>
 
             <Spacer size="10px" />
@@ -111,11 +119,14 @@ const Cart = ({navigation: {navigate}}) => {
             <Text color="dark">Standard Delivery</Text>
             <Text color="dark">Saturday 27 - Tuesday 30</Text>
             <Text color="dark">Cost: $10</Text>
-
             <Spacer size="30px" />
-            <Button block onPress={() => navigate("PaymentForm")}>
+
+            <Payment onChange={(creditCardData) => console.log(creditCardData)} />
+            <Spacer size="30px" />
+            <Button block onPress={() => {setShowModalCongrats(true)}}>
               <Text color="light">Confirmation</Text>
             </Button>
+            <Spacer size="40px" />
           </>
         )}
       </ScrollView>
