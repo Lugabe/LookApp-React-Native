@@ -80,7 +80,7 @@ const DrawerComponent = () =>{
 const Routes = () => {
   return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='Orders'>
+            <Stack.Navigator initialRouteName='Home'>
                 <Stack.Screen options={{
                     headerShown: false
                 }} name='Home' component={Home}/>

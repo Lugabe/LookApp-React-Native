@@ -4,11 +4,14 @@ import { Box, Button, Spacer, Text, Title, Touchable } from '../../components/in
 import Header from '../../components/Header';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import Picker from '../../components/Picker';
+import Cart from '../Cart';
 
 import util from '../../util';
 import { colors } from '../../styles/theme.json';
 
-const Product = () => {
+const Product = ({navigation: {navigate}}) => {
+
+
   return (
     <>
       <Header
@@ -55,7 +58,10 @@ const Product = () => {
             ]}
           />
           <Spacer size="30px" />
-          <Button block>
+          <Button 
+            block
+            onPress={() => navigate("Cart")}
+            >
             <Text color="light">Add to Cart</Text>
           </Button>
         </Box>
