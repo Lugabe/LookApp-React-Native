@@ -2,7 +2,7 @@ import React from "react";
 import {ScrollView, Text} from "../../components/index"
 import Category from ".";
 
-const CategoryList = () =>{
+const CategoryList = ({categories}) =>{
     return(
         <ScrollView 
             fluid
@@ -11,8 +11,8 @@ const CategoryList = () =>{
               paddingLeft: 20,
               paddingRight: 20
             }}>
-           {Array.from(Array(10))?.map(item =>(
-                    <Category title={'Dogs'} description={'123 ITEMS'} />
+           {categories?.map(category =>(
+                    <Category category={category} title={'Dogs'} description={'123 ITEMS'} />
                     ))}
         </ScrollView>
     )

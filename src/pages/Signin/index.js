@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {AppContext} from "../../contexts/app"
 
-const SignIn = ({ navigation: { replace } }) => {
+const SignIn = ({ navigation: { replace, navigate } }) => {
   const {setUser: setUserContext} = useContext(AppContext)
   const [user, setUser] = useState({
     email: '',

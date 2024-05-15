@@ -52,7 +52,7 @@ const Home = ({ navigation }) => {
               <Text color="light">SigIn my account</Text>
             </Button>
             <Spacer size="20px" />
-            <Text color="light" underline onPress={() => navigate('SignUp')}>
+            <Text color="light" underline onPress={() => navigation.navigate('SignUp')}>
               Create new account
             </Text>
           </Box>

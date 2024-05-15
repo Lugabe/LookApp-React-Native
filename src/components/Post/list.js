@@ -2,11 +2,14 @@ import React from 'react';
 import { Box, Text, Title, ScrollView } from '../../components';
 import Post from '.';
 
-const PostList = () => {
+const PostList = ({posts}) => {
   return (
-    <Box fluid>
-      {Array.from(Array(15))?.map((item) => (
-        <Post />
+    <Box fluid 
+      style={{
+        minWidth: "100%"
+      }}>
+      {posts?.map((post) => (
+        <Post post={post}/>
       ))}
     </Box>
   );

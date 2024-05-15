@@ -5,7 +5,7 @@ import util from "../../util";
 import {colors} from "../../styles/theme.json"
 
 
-const Category = ({title, description}) =>{
+const Category = ({category}) =>{
 
     const {navigate} = useNavigation()
     
@@ -21,7 +21,7 @@ const Category = ({title, description}) =>{
                     fluid
                     width="100%"
                     height="100%"
-                    image="https://dogagingproject.org/_next/image?url=https%3A%2F%2Fcontent.dogagingproject.org%2Fwp-content%2Fuploads%2F2023%2F09%2Fhome-thumb-min.jpg&w=3840&q=75">
+                    image= {category.cover}>
                     <Box
                         width= "100%"
                         justify= "center"
@@ -30,11 +30,11 @@ const Category = ({title, description}) =>{
                         background= {util.toAlpha(colors.black,50)}
                         >
                         <Title bold color="light">
-                            {title}
+                            {category.title}
                         </Title>
                         <Spacer />
                         <Text color="light" variant="small">
-                            {description}
+                            {category.items}
                         </Text>
 
                     </Box>

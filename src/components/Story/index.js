@@ -1,9 +1,11 @@
 import React from "react";
+import moment from "moment";
 import { Touchable, Text, Cover, Box } from "..";
 import {colors} from "../../styles/theme.json"
 
 
-const Story = () =>{
+
+const Story = ({story}) =>{
     return(
         <Touchable
             onPress={()=> alert("Funcionou")}
@@ -16,7 +18,7 @@ const Story = () =>{
             <Cover 
                 width="100%"
                 height= "100%" 
-                image = "https://media.licdn.com/dms/image/D4E03AQHP7KEaEKrrDw/profile-displayphoto-shrink_200_200/0/1685303481885?e=2147483647&v=beta&t=lIejEWSnr64gfIYBKzAaGw731nhEC3XpvM0tW6PJP9o">
+                image ={story?.cover} >
 
                 <Box fluid
                     hasPadding
@@ -28,7 +30,8 @@ const Story = () =>{
                         width="50px"
                         height= "50px"
                         circle 
-                        image= "https://media.licdn.com/dms/image/D4E03AQHP7KEaEKrrDw/profile-displayphoto-shrink_200_200/0/1685303481885?e=2147483647&v=beta&t=lIejEWSnr64gfIYBKzAaGw731nhEC3XpvM0tW6PJP9o">
+                        image= {story?.owner.photo}
+                    >
                     </Cover>
                    
                     <Box
@@ -38,12 +41,12 @@ const Story = () =>{
                         <Text 
                             bold 
                             color="light" 
-                            >Sara Bernardi</Text>
+                            >{story?.owner.username}</Text>
                     
                         <Text 
                             color="light"
                             variant = "small"
-                            >2 mins ago</Text>
+                            >{moment(story.createdAt).fromNow(true)}</Text>
                     </Box>
                     
                 </Box>

@@ -3,7 +3,10 @@ import { Box,Text,Title,ScrollView } from "../../components";
 import Story from ".";
 
 
-const StoryList = () =>{
+const StoryList = ({stories}) =>{
+
+
+
     return(
         <Box fluid height = "260px">
             <Box 
@@ -28,13 +31,9 @@ const StoryList = () =>{
             <ScrollView 
             horizontal 
             style={{paddingLeft: 20}}>
-                {Array.from(Array(20))?.map(item =>(
-                    
-                <Text 
-                style={{marginLeft: 10}} 
-                >
-                    <Story />
-                </Text>))}
+                {stories?.map(story =>(
+                <Story story={story}/>
+              ))}
             </ScrollView>
         </Box>
     );
