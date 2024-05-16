@@ -11,7 +11,7 @@ const Category = ({category}) =>{
     
     return(
         <Touchable 
-        onPress={() => navigate('Category')}
+        onPress={() => navigate('Category', {category})}
             fluid
             width="100%" 
             height= "180px" 
