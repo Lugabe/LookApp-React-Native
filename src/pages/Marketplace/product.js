@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { StretchyScrollView } from 'react-native-stretchy';
 import { Box, Button, Spacer, Text, Title, Touchable } from '../../components/index';
 import Header from '../../components/Header';
@@ -8,17 +8,25 @@ import Cart from '../Cart';
 
 import util from '../../util';
 import { colors } from '../../styles/theme.json';
+import { AppContext } from '../../contexts/app';
 
-const Product = ({navigation: {navigate}}) => {
+const Product = ({navigation, route}) => {
 
+  const {product} = route?.params;
+  const {addToCart, cart} = useContext(AppContext)
+  const [size , setSize ] = useState()
+  useEffect(() =>{
+    setSize (product?.size?.[0]?.value)
+  },[product])
 
+  console.log( route)
   return (
     <>
       <Header
-        title="Product"
+        title= {product?.title}
         goBack
         right={() => (
-          <Touchable hasPadding width="70px" onPress={() => alert('eeee')}>
+          <Touchable hasPadding width="70px" onPress={() => navigation.navigate("Cart")}>
             <Icon name="bag" size={20} />
           </Touchable>
         )}
@@ -31,36 +39,31 @@ const Product = ({navigation: {navigate}}) => {
         foreground={
           <Box hasPadding justify="flex-end">
             <Title color="light" bold variant="big">
-              R$954,00
+              {product?.price}
             </Title>
           </Box>
         }
       >
         <Box hasPadding background="light">
-          <Text color="black">Rock</Text>
+          <Text color="black">{product?.type}</Text>
           <Spacer size="20px" />
-          <Title color="black">Rock bebendo água</Title>
+          <Title color="black">{product?.title}</Title>
           <Spacer size="30px" />
           <Text color="dark" bold>
-            Rock é flagrado bebendo água no rio, e após ver nego preto em cima da arvore, ele saiu
-            correndo com medo.
+            {product?.description}
           </Text>
           <Spacer size="30px" />
           <Picker
             title="Size"
-            onChange= {(value => alert(value))}
-            initialValue="M"
-            options={[
-              { label: 'P', value: 'P' },
-              { label: 'M', value: 'M' },
-              { label: 'G', value: 'G' },
-              { label: 'XG', value: 'XG' },
-            ]}
+            options={product?.sizes}
+            initialValue={product?.sizes?.[0]?.value}
+            onChange= {value => setSize(value)}
           />
           <Spacer size="30px" />
           <Button 
             block
-            onPress={() => navigate("Cart")}
+            onPress={() => {addToCart({...product, size});
+             navigation.navigate("Cart")}}
             >
             <Text color="light">Add to Cart</Text>
           </Button>

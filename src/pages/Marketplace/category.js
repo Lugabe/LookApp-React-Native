@@ -41,7 +41,7 @@ const Category = ({ route, navigation }) => {
         title={category?.title}
         goBack={true}
         right={() => (
-          <Touchable hasPadding width="70px" onPress={() => alert('funcionou')}>
+          <Touchable hasPadding width="70px" onPress={() => navigation.navigate("Cart")}>
             <Icon name="bag" size={20} />
           </Touchable>
         )}

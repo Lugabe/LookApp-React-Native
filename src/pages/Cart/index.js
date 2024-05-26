@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import React from 'react';
 import { Box, ScrollView, Spacer, Text, Title, Button } from '../../components';
 import Header from '../../components/Header';
@@ -8,10 +8,11 @@ import { colors } from '../../styles/theme.json';
 import util from '../../util';
 import Payment from '../../components/Forms/payment';
 import CongratsModel from '../../components/Modals/congrats';
-
+import { AppContext } from '../../contexts/app';
 
 const Cart = ({ navigation: { navigate } }) => {
 
+  const {cart} = useContext(AppContext)
   const [showModalCongrats, setShowModalCongrats] = useState(false)
   const [tab, setTab] = useState('cart');
 
@@ -37,12 +38,9 @@ const Cart = ({ navigation: { navigate } }) => {
 
         {tab === 'cart' && (
           <>
-            {Array.from(Array(3))?.map((item) => (
+            {cart?.map((product) => (
               <Product
-                brand="Zara"
-                title={'Wide jeans'}
-                price="$435"
-                cover="https://ecommercenapratica.com/wp-content/uploads/2020/12/mix-de-produtos-capa-1.png"
+                product = {product}
                 selected
               />
             ))}
