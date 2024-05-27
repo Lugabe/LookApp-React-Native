@@ -19,18 +19,19 @@ const PaymentForm = ({ onChange = (creditCard) => {} }) => {
     <>
       <SegmentedPicker
         ref={pickerRef}
-        onConfirm={(data) => setData({...data, valid_date: `${data.Moth}/${data.Year}` })}
+        onConfirm={(validDate) => 
+          setData({...data, valid_date: `${validDate.Moth}/${validDate.Year}` })}
         options={[
           {
             key: 'Moth',
             items: [
-              { label: 'Option 1', value: 'option_1' },
-              { label: 'Option 2', value: 'option_2' },
+              { label: '05', value: '05' },
+              { label: '06', value: '06' },
             ],
           },
           {
             key: 'Year',
-            items: [{ label: 'Option 3', value: 'option 3' }],
+            items: [{ label: '2024', value: '2024' },{ label: '2025', value: '2025' }],
           },
         ]}
       ></SegmentedPicker>
@@ -59,6 +60,7 @@ const PaymentForm = ({ onChange = (creditCard) => {} }) => {
 
         <Touchable width ="100%" onPress={() => pickerRef.current.show()}>
           <Input
+            value={data.valid_date}
             editable={false}
             placeholder="09/25"
           />

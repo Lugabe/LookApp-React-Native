@@ -19,7 +19,6 @@ const Product = ({navigation, route}) => {
     setSize (product?.size?.[0]?.value)
   },[product])
 
-  console.log( route)
   return (
     <>
       <Header

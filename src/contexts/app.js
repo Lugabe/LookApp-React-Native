@@ -2,6 +2,8 @@ import React, { createContext, useState } from 'react';
 
 const ContextProvider = ({ children }) => {
 
+  const DISCOUNT_PERCENTAGE = 0.1
+  const ORDER_NUMBER = new Date().getTime()
   const [user, setUser] = useState({})
   const [cart, setCart] = useState([])
 
@@ -24,7 +26,7 @@ const ContextProvider = ({ children }) => {
   }
 
   return <AppContext.Provider 
-    value={{user,setUser, cart, addToCart, removeFromCart }}>{children}</AppContext.Provider>;
+    value={{user,setUser, cart, addToCart, removeFromCart,DISCOUNT_PERCENTAGE,ORDER_NUMBER }}>{children}</AppContext.Provider>;
 };
 
 export const AppContext = createContext({});
