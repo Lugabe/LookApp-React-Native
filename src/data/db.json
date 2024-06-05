@@ -242,16 +242,49 @@
       "createdAt": "2024-05-27T01:08:31+00:00",
       "orderNumber": 1716771478334,
       "trackingNumber": 1716772111147,
-      "totalValue": "2260.00"
+      "totalValue": "2260.00",
+      "totalItems": 1
+      
     },
     {
       "id": "a2ef",
       "userId": "e9c4",
-      "step": "waiting",
+      "step": "delivered",
       "createdAt": "2024-05-27T01:17:37+00:00",
       "orderNumber": 1716771478334,
       "trackingNumber": 1716772657888,
-      "totalValue": "2260.00"
+      "totalValue": "2260.00",
+      "totalItems": 3
+    },
+    {
+      "id": "9e19",
+      "userId": "e9c4",
+      "step": "canceled",
+      "createdAt": "2024-06-05T02:25:17+00:00",
+      "orderNumber": 1717554214464,
+      "trackingNumber": 1717554317311,
+      "totalValue": "2260.00",
+      "totalItems": 1
+    },
+    {
+      "id": "c115",
+      "userId": "e9c4",
+      "step": "waiting",
+      "createdAt": "2024-06-05T03:00:11+00:00",
+      "orderNumber": 1717556307474,
+      "trackingNumber": 1717556411104,
+      "totalValue": "982.00",
+      "totalItems": 5
+    },
+    {
+      "id": "c64d",
+      "userId": "e9c4",
+      "step": "waiting",
+      "createdAt": "2024-06-05T03:27:15+00:00",
+      "orderNumber": 1717557923223,
+      "trackingNumber": 1717558035610,
+      "totalValue": "3232.00",
+      "totalItems": 3
     }
   ]
 }

@@ -1,16 +1,18 @@
-import React from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import { ScrollView, Text } from '../../components/index';
 import OrderItem from '.';
+import { AppContext } from '../../contexts/app';
 
-const OrderList = () => {
+const OrderList = ({orders}) => {
+
   return (
     <>
       <ScrollView 
         fluid 
         background="light" 
         hasPadding>
-        {Array.from(Array(5))?.map(item => (
-          <OrderItem/>
+        {orders?.map(order => (
+          <OrderItem order = {order}/>
         ))}
       </ScrollView>
     </>

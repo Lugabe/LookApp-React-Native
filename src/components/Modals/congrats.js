@@ -1,7 +1,11 @@
 import React from 'react';
+import {useNavigation} from "@react-navigation/native"
 import { Box, Spacer, Text, Title, Button, Cover } from '..';
 
 const CongratsModel = () => {
+
+  const {navigate} = useNavigation()
+
   return (
     <Box
       background="light"
@@ -28,7 +32,7 @@ const CongratsModel = () => {
       <Spacer />
       <Text bold>Your items are on the way and should arrive shortly</Text>
       <Spacer size="40px" />
-      <Button justify="flex-end" block onPress={() => {}}>
+      <Button justify="flex-end" block onPress={() => navigate ("Orders")}>
         <Text color="light">Track your order</Text>
       </Button>
       <Spacer size="40px" />

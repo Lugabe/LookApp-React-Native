@@ -72,6 +72,16 @@ const DrawerComponent = () =>{
                     <Icon name="tag" color={color}/>
                 )
     }}/>
+
+<Drawer.Screen 
+        name= "Order" 
+        component={Orders}
+        options={{
+            drawerIcon: ({color}) =>
+                (
+                    <Icon name="bag" color={color}/>
+                )
+    }}/>
   </Drawer.Navigator>
         )
 }

@@ -1,11 +1,32 @@
-import React from 'react';
+import React, {useEffect,useState, useContext} from 'react';
 import OrderList from './list';
 import { Box, Spacer, Text, Title } from '..';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import { colors } from '../../styles/theme.json';
 import util from '../../util';
+import moment from 'moment';
 
-const OrderItem = () => {
+
+const OrderItem = ({order}) => {
+
+    const stepEnum = {
+        waiting: {
+            icon: 'clock',
+            color: 'warning'
+        },
+        delivered: {
+            icon: 'check',
+            color: 'success'
+        },
+        canceled: {
+            icon: 'close',
+            color: 'danger'
+        }
+    }
+
+    const stepDate = stepEnum[order?.step]
+
+
   return (
     <>
         <Spacer size={"5px"}/>
@@ -26,14 +47,14 @@ const OrderItem = () => {
             >
             <Box align="center" row>
                 <Icon 
-                    name="check" 
+                    name='check' 
                     size={20} 
-                    color={colors.success} />
-                <Text bold color="success" spacing="0px 0px 0px 6px">
-                DELIVERED
+                    color={colors[stepDate?.color]} />
+                <Text bold color={stepDate.color} spacing="0px 0px 0px 6px">
+                {order?.step?.toUpperCase()}
                 </Text>
             </Box>
-            <Text>August 17, 2024 3:58 PM</Text>
+            <Text>{moment(order?.createdAt).format('DD/MM/YYYY HH:mm')}</Text>
             </Box>
             <Box
             hasPadding
@@ -43,10 +64,10 @@ const OrderItem = () => {
                 borderBottomColor: util.toAlpha(colors.muted, 50),
             }}
             >
-            <Title>Order N° 2342</Title>
+            <Title bold variant = "small">Order N° {order?.orderNumber}</Title>
             <Spacer size={'5px'} />
-            <Text bold color="dark">
-                Tracking Number: <Text color="dark">4234</Text>
+            <Text  color="dark" variant= "normal">
+                Tracking Number: <Text color="dark">{order?.trackingNumber}</Text>
             </Text>
             </Box>
             <Box 
@@ -56,10 +77,10 @@ const OrderItem = () => {
                 width="100%"
                 >
             <Text bold color="dark">
-                VALUE OF ITEMS: <Text color="dark">R$53,30</Text>
+                VALUE OF ITEMS: <Text color="dark">R${order?.totalValue}</Text>
             </Text>
             <Text bold color="dark">
-                QUANTITY: <Text color="dark">3</Text>
+                QUANTITY: <Text color="dark">{order?.totalItems}</Text>
             </Text>
             </Box>
         </Box>
